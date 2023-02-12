@@ -10,10 +10,10 @@ namespace ISpan.Practice.Utilities
     {
 		public string Formula { get; private set; } = string.Empty;
 		public double Result { get; private set; }
-		public void CalculateResult()
+		public void Calculate()
 		{
-			List<string> _numbers = new List<string>();
-			List<string> _operators = new List<string>();
+			List<double> numbers = new List<double>();
+			List<string> operators = new List<string>();
 
 			int index = 0;
 			for (int i = 0; i < Formula.Length; i++)
@@ -21,52 +21,49 @@ namespace ISpan.Practice.Utilities
 				List<char> ops = new List<char> { '+', '-', '*', '/' };
 				if (ops.Contains(Formula[i]))
 				{
-					_numbers.Add(Formula.Substring(index, i - index));
-					_operators.Add(Formula[i].ToString());
+					numbers.Add(double.Parse(Formula.Substring(index, i - index)));
+					operators.Add(Formula[i].ToString());
 					index = i + 1;
 				}
 			}
-			_numbers.Add(Formula.Substring(index, Formula.Length - index));
+			numbers.Add(double.Parse(Formula.Substring(index, Formula.Length - index)));
 
-			List<double> NumbersTemp = _numbers.Select(n => double.Parse(n)).ToList();
-			List<string> OperatorsTemp = new List<string>(_operators);
 			List<int> indices = new List<int>();
-
-			for (int i = 0; i < OperatorsTemp.Count; i++)
+			for (int i = 0; i < operators.Count; i++)
 			{
-				if (OperatorsTemp[i] == "*")
+				if (operators[i] == "*")
 				{
-					NumbersTemp[i + 1] = NumbersTemp[i] * NumbersTemp[i + 1];
+					numbers[i + 1] = numbers[i] * numbers[i + 1];
 					indices.Add(i);
 				}
-				else if (OperatorsTemp[i] == "/")
+				else if (operators[i] == "/")
 				{
-					NumbersTemp[i + 1] = NumbersTemp[i] / NumbersTemp[i + 1];
+					numbers[i + 1] = numbers[i] / numbers[i + 1];
 					indices.Add(i);
 				}
 			}
 
-			OperatorsTemp = OperatorsTemp.Where(o => o == "+" || o == "-").ToList();
+			operators = operators.Where(o => o == "+" || o == "-").ToList();
 			List<double> numberList = new List<double>();
-			for (int i = 0; i < NumbersTemp.Count; i++)
+			for (int i = 0; i < numbers.Count; i++)
 			{
 				if (!indices.Contains(i))
 				{
-					numberList.Add(NumbersTemp[i]);
+					numberList.Add(numbers[i]);
 				}
 			}
-			NumbersTemp = numberList;
+			numbers = numberList;
 
-			Result = NumbersTemp[0];
-			for (int i = 0; i < OperatorsTemp.Count; i++)
+			Result = numbers[0];
+			for (int i = 0; i < operators.Count; i++)
 			{
-				if (OperatorsTemp[i] == "+")
+				if (operators[i] == "+")
 				{
-					Result += NumbersTemp[i + 1];
+					Result += numbers[i + 1];
 				}
-				else if (OperatorsTemp[i] == "-")
+				else if (operators[i] == "-")
 				{
-					Result -= NumbersTemp[i + 1];
+					Result -= numbers[i + 1];
 				}
 			}
 		}
@@ -77,16 +74,16 @@ namespace ISpan.Practice.Utilities
 			Formula = string.Empty;
 		}
 
-		public void InputNumber(string number)
+		public void InputNumber(string num)
 		{
-			Formula += number;
+			Formula += num;
 		}
 
-		public void Operation(string _operator)
+		public void InputOperator(string op)
 		{
 			List<char> ops = new List<char> { '+', '-', '*', '/' };
 			if (ops.Contains(Formula[Formula.Count()-1])) return;
-			Formula += _operator;
+			Formula += op;
 		}
 	}
 }

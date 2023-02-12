@@ -45,7 +45,7 @@ namespace ISpan.Practice.Winform
 			Button button = sender as Button;
 			calculator.InputNumber(button.Text);
 
-			calculator.CalculateResult();
+			calculator.Calculate();
 			labelFormula.Text = calculator.Formula;
 			labelResult.Text = "= " + calculator.Result.ToString("#0.00");
 		}
@@ -53,14 +53,14 @@ namespace ISpan.Practice.Winform
 		private void ButtonOperation_Click(object sender, EventArgs e)
 		{
 			Button button = sender as Button;
-			calculator.Operation(button.Text);
+			calculator.InputOperator(button.Text);
 
 			labelFormula.Text = calculator.Formula;
 		}
 
 		private void ButtonEqual_Click(object sender, EventArgs e)
 		{
-			calculator.CalculateResult();
+			calculator.Calculate();
 			labelFormula.Text = calculator.Formula;
 			labelResult.Text = "= " + calculator.Result.ToString("#0.00");
 		}
