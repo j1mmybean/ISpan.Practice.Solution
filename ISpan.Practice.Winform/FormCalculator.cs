@@ -37,7 +37,16 @@ namespace ISpan.Practice.Winform
 			buttonMultiplication.Click += ButtonOperation_Click;
 			buttonDivision.Click += ButtonOperation_Click;
 			buttonEqual.Click += ButtonEqual_Click;
+			buttonDelete.Click += ButtonDelete_Click;
 			#endregion
+		}
+
+		private void ButtonDelete_Click(object sender, EventArgs e)
+		{
+			calculator.Delete();
+
+			labelFormula.Text = calculator.Formula;
+			labelResult.Text = "= " + calculator.Calculate();
 		}
 
 		private void ButtonNumber_Click(object sender, EventArgs e)
@@ -45,9 +54,8 @@ namespace ISpan.Practice.Winform
 			Button button = sender as Button;
 			calculator.InputNumber(button.Text);
 
-			calculator.Calculate();
 			labelFormula.Text = calculator.Formula;
-			labelResult.Text = "= " + calculator.Result.ToString("#0.00");
+			labelResult.Text = "= " + calculator.Calculate();
 		}
 
 		private void ButtonOperation_Click(object sender, EventArgs e)
@@ -60,16 +68,17 @@ namespace ISpan.Practice.Winform
 
 		private void ButtonEqual_Click(object sender, EventArgs e)
 		{
-			calculator.Calculate();
-			labelFormula.Text = calculator.Formula;
-			labelResult.Text = "= " + calculator.Result.ToString("#0.00");
+			labelFormula.Text = calculator.Formula + " = " + calculator.Calculate();
+			labelResult.Text = "= " + calculator.Calculate();
+
+			calculator.Equal();
 		}
 
 		private void ButtonClear_Click(object sender, EventArgs e)
 		{
 			calculator.Clear();
 			labelFormula.Text = calculator.Formula;
-			labelResult.Text = calculator.Result.ToString();
+			labelResult.Text = "0";
 		}
 	}
 }

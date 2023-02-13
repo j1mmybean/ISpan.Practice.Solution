@@ -11,6 +11,11 @@ namespace ISpan.Practice.ConsoleApp
 
 		static void Main(string[] args)
 		{
+			string str = "abcd";
+			str = str.Remove( - 1);
+			Console.WriteLine(str);
+
+
 			List<string> list = new List<string> { "a", "b", "c", "d" };
 			for (int i = 0; i < list.Count; i++)
 			{

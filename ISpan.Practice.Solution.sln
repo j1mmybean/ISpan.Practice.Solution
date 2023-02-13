@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISpan.Practice.Winform", "I
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISpan.Practice.ConsoleApp", "ISpan.Practice.ConsoleApp\ISpan.Practice.ConsoleApp.csproj", "{7CAD84FA-0742-48C2-9E46-2B510144A569}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISpan.Practice.Tests", "ISpan.Practice.Tests\ISpan.Practice.Tests.csproj", "{831558D3-8988-409D-B082-D90BAE4C1BA8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{7CAD84FA-0742-48C2-9E46-2B510144A569}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7CAD84FA-0742-48C2-9E46-2B510144A569}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7CAD84FA-0742-48C2-9E46-2B510144A569}.Release|Any CPU.Build.0 = Release|Any CPU
+		{831558D3-8988-409D-B082-D90BAE4C1BA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{831558D3-8988-409D-B082-D90BAE4C1BA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{831558D3-8988-409D-B082-D90BAE4C1BA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{831558D3-8988-409D-B082-D90BAE4C1BA8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
