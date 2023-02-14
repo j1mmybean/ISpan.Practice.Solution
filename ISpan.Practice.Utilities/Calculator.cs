@@ -13,13 +13,10 @@ namespace ISpan.Practice.Utilities
 		private List<string> GetOperators(string formula)
 		{
 			List<char> ops = new List<char> { '+', '-', '*', '/' };
-			formula = ops.Contains(formula[formula.Length - 1])
-							? formula.Remove(formula.Length - 1)
-							: formula;
 			List<string> operators = new List<string>();
 
-			int index = 0;
-			for (int i = 0; i < formula.Length; i++)
+			//i大於0，因為允許首個數字為負；i小於formula.Length-1，因為若算式最後一位為運算子，則其不加入運算
+			for (int i = 1; i < formula.Length - 1; i++)
 			{
 				if (ops.Contains(formula[i]))
 				{
@@ -30,31 +27,14 @@ namespace ISpan.Practice.Utilities
 		}
 		private List<decimal> GetNumbers(string formula)
 		{
-			List<char> ops = new List<char> { '+', '-', '*', '/' };
-			formula = ops.Contains(formula[formula.Length - 1])
-							? formula.Remove(formula.Length - 1)
-							: formula;
-			List<decimal> numbers = new List<decimal>();
-			List<string> operators = new List<string>();
+			char[] ops = { '+', '-', '*', '/' };
+			List<decimal> numbers = formula.Split(ops).Select(n => decimal.Parse(n)).ToList();
+
+			//允許首位數字為負
 			if (formula[0] == '-')
 			{
-				numbers.Add(-1);
-				operators.Add("*");
-				formula = formula.Remove(0, 1);
+				numbers[0] = -numbers[0];
 			}
-
-			int index = 0;
-			for (int i = 0; i < formula.Length; i++)
-			{
-				if (ops.Contains(formula[i]))
-				{
-					numbers.Add(decimal.Parse(formula.Substring(index, i - index)));
-					operators.Add(formula[i].ToString());
-					index = i + 1;
-				}
-			}
-
-			numbers.Add(decimal.Parse(formula.Substring(index, formula.Length - index)));
 
 			return numbers;
 		}
