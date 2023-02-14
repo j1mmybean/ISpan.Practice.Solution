@@ -10,6 +10,24 @@ namespace ISpan.Practice.Utilities
     {
 		public string Formula { get; private set; } = string.Empty;
 
+		private List<string> GetOperators(string formula)
+		{
+			List<char> ops = new List<char> { '+', '-', '*', '/' };
+			formula = ops.Contains(formula[formula.Length - 1])
+							? formula.Remove(formula.Length - 1)
+							: formula;
+			List<string> operators = new List<string>();
+
+			int index = 0;
+			for (int i = 0; i < formula.Length; i++)
+			{
+				if (ops.Contains(formula[i]))
+				{
+					operators.Add(formula[i].ToString());
+				}
+			}
+			return operators;
+		}
 		private List<decimal> GetNumbers(string formula)
 		{
 			List<char> ops = new List<char> { '+', '-', '*', '/' };

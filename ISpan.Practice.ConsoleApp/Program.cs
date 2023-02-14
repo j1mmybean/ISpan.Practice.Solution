@@ -11,8 +11,10 @@ namespace ISpan.Practice.ConsoleApp
 
 		static void Main(string[] args)
 		{
-			string str = "abcd";
-			str = str.Remove( - 1);
+			string str = "a b c d";
+			Console.WriteLine(str);
+
+			str.Replace(' ', ',');
 			Console.WriteLine(str);
 
 
