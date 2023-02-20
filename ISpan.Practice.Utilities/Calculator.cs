@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 
 namespace ISpan.Practice.Utilities
 {
+	/// <summary>
+	/// 一個含有加減乘除功能之計算機
+	/// todo可輸入負數
+	/// todo可開方
+	/// </summary>
     public class Calculator
     {
 		public string Formula { get; private set; } = string.Empty;
@@ -42,9 +47,13 @@ namespace ISpan.Practice.Utilities
 		public void InputOperator(string op)
 		{
 			List<char> ops = new List<char> { '+', '-', '*', '/' };
-			if (string.IsNullOrEmpty(Formula) && op != "-") return;
-			if (!string.IsNullOrEmpty(Formula) && ops.Contains(Formula[Formula.Count()-1])) return;
-			Formula += op;
+
+			if (string.IsNullOrEmpty(Formula) || ops.Contains(Formula[Formula.Count() - 1]))
+			{
+				if (op == "-") Formula += "(-)";
+				else return;
+			}
+			else Formula += op;
 		}
 	}
 }

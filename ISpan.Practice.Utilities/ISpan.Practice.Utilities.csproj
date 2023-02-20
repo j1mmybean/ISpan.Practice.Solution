@@ -42,7 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Calculator.cs" />
-    <Compile Include="CalculatorExtensions.cs" />
+    <Compile Include="FormulaExtensions.cs" />
+    <Compile Include="OperationExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
