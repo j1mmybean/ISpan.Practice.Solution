@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 namespace ISpan.Practice.Utilities
 {
 	/// <summary>
-	/// 一個含有加減乘除功能之計算機
-	/// todo可輸入負數
-	/// todo可開方
-	/// todo括號內先計算
+	/// 一個含有加減乘除開方括號允許輸入負數功能之計算機
+	/// todo 8(1+1) = 16
 	/// todo DividedByZeroException
 	/// </summary>
     public class Calculator
@@ -21,6 +19,7 @@ namespace ISpan.Practice.Utilities
 		{
 			if (string.IsNullOrEmpty(formula)) formula = Formula;
 
+			//括號內先做
 			while (formula.Contains('('))
 			{
 				string subFormula = formula.GetSubFormula();
@@ -28,9 +27,11 @@ namespace ISpan.Practice.Utilities
 				formula = formula.Replace("(" + subFormula + ")", subResult);
 			}
 
+			//蒐集算式中的運算子和數字
 			List<string> operators = formula.GetOperators();
 			List<decimal> numbers = formula.GetNumbers();
 
+			numbers = numbers.Power(ref operators);
 			numbers = numbers.MultiplcationAndDivision(ref operators);
 			decimal result = numbers.AdditionAndSubstraction(operators);
 

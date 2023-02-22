@@ -8,7 +8,7 @@ namespace ISpan.Practice.Utilities
 {
 	public static class FormulaExtensions
 	{
-		static char[] ops = { '+', '-', '*', '/' };
+		static char[] ops = { '+', '-', '*', '/', '^'};
 
 		public static string GetSubFormula(this string formula)
 		{
@@ -28,6 +28,7 @@ namespace ISpan.Practice.Utilities
 				}
 				else if (formula[i] == '(') count++;
 			}
+			subFormula = subFormula == string.Empty ? formula.Substring(begin + 1) : subFormula;
 
 			return subFormula;
 		}

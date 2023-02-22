@@ -15,11 +15,11 @@ namespace ISpan.Practice.Tests
 			Assert.AreEqual(expected, actual);
 		}
 
-		[TestCase("-12+33-444*56/7")]
+		[TestCase("-12+-33--444*56/7")]
 		public void GetNumbers_¶Ç¦^decimal¼Æ¦rList(string formula)
 		{
 			string source = formula;
-			var expected = new List<decimal> { -12, 33, 444, 56, 7 };
+			var expected = new List<decimal> { -12, -33, -444, 56, 7 };
 
 			var actual = source.GetNumbers();
 			Assert.AreEqual(expected, actual);
