@@ -12,7 +12,7 @@ namespace ISpan.Practice.Tests
 
 			var expected = (new List<decimal> { -12, 33, 444 * 56 / 7 }, new List<string> { "+", "-" });
 
-			var actual = (numbersSource.MultiplcationAndDivision(operatorsSource, out operatorsSource), operatorsSource);
+			var actual = (numbersSource.MultiplcationAndDivision(ref operatorsSource), operatorsSource);
 			Assert.AreEqual(expected, actual);
 		}
 

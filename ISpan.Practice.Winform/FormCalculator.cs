@@ -32,13 +32,25 @@ namespace ISpan.Practice.Winform
 			button8.Click += ButtonNumber_Click;
 			button9.Click += ButtonNumber_Click;
 			buttonClear.Click += ButtonClear_Click;
+			buttonPower.Click += ButtonOperation_Click;
 			buttonAddition.Click += ButtonOperation_Click;
 			buttonSubtraction.Click += ButtonOperation_Click;
 			buttonMultiplication.Click += ButtonOperation_Click;
 			buttonDivision.Click += ButtonOperation_Click;
 			buttonEqual.Click += ButtonEqual_Click;
 			buttonDelete.Click += ButtonDelete_Click;
+			buttonLeftBracket.Click += ButtonBrackets_Click;
+			buttonLeftBracket.Click += ButtonBrackets_Click;
 			#endregion
+		}
+
+		private void ButtonBrackets_Click(object sender, EventArgs e)
+		{
+			Button button = sender as Button;
+			calculator.InputBrackets(button.Text);
+
+			labelFormula.Text = calculator.Formula;
+			labelResult.Text = "= " + calculator.Calculate();
 		}
 
 		private void ButtonDelete_Click(object sender, EventArgs e)

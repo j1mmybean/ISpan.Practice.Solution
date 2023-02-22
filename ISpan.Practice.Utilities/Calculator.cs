@@ -10,17 +10,28 @@ namespace ISpan.Practice.Utilities
 	/// 一個含有加減乘除功能之計算機
 	/// todo可輸入負數
 	/// todo可開方
+	/// todo括號內先計算
+	/// todo DividedByZeroException
 	/// </summary>
     public class Calculator
     {
 		public string Formula { get; private set; } = string.Empty;
 
-		public string Calculate()
+		public string Calculate(string formula = default)
 		{
-			List<string> operators = Formula.GetOperators();
-			List<decimal> numbers = Formula.GetNumbers();
+			if (string.IsNullOrEmpty(formula)) formula = Formula;
 
-			numbers = numbers.MultiplcationAndDivision(operators, out operators);
+			while (formula.Contains('('))
+			{
+				string subFormula = formula.GetSubFormula();
+				string subResult = Calculate(subFormula);
+				formula = formula.Replace("(" + subFormula + ")", subResult);
+			}
+
+			List<string> operators = formula.GetOperators();
+			List<decimal> numbers = formula.GetNumbers();
+
+			numbers = numbers.MultiplcationAndDivision(ref operators);
 			decimal result = numbers.AdditionAndSubstraction(operators);
 
 			return result.ToString("#0.00");
@@ -46,14 +57,19 @@ namespace ISpan.Practice.Utilities
 
 		public void InputOperator(string op)
 		{
-			List<char> ops = new List<char> { '+', '-', '*', '/' };
+			char[] ops = { '+', '-', '*', '/', '^'};
 
 			if (string.IsNullOrEmpty(Formula) || ops.Contains(Formula[Formula.Count() - 1]))
 			{
-				if (op == "-") Formula += "(-)";
+				if (op == "-") Formula += "(-";
 				else return;
 			}
 			else Formula += op;
+		}
+
+		public void InputBrackets(string bracket)
+		{
+			Formula += bracket;
 		}
 	}
 }

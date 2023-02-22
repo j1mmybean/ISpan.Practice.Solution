@@ -4,7 +4,18 @@ namespace ISpan.Practice.Tests
 {
 	public class FormulaExtensionsTests
 	{
-		[TestCase("-12+33-444*56/7")] // Attribute特徵項
+
+		[TestCase("-12+(33-444)*(56/7+8)")] // Attribute特徵項
+		public void GetSubFormula_傳回Formula中第一個subFormula字串(string formula)
+		{
+			string source = formula;
+			var expected = "33-444";
+
+			var actual = source.GetSubFormula();
+			Assert.AreEqual(expected, actual);
+		}
+
+		[TestCase("-12+33-444*56/7")]
 		public void GetNumbers_傳回decimal數字List(string formula)
 		{
 			string source = formula;
