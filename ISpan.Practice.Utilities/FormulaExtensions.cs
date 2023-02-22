@@ -56,7 +56,7 @@ namespace ISpan.Practice.Utilities
 
 			foreach (var op in ops)
 			{
-				formula = formula.Replace(op + "-", op + "n");//n => nagetive
+				formula = formula.Replace(op + "-", op + "n");//n => negative
 				formula = formula.Replace(op, ' ');
 			}
 
