@@ -19,6 +19,15 @@ namespace ISpan.Practice.Utilities
 		{
 			if (string.IsNullOrEmpty(formula)) formula = Formula;
 
+			while (!int.TryParse(formula[formula.Length - 1].ToString(), out int number))
+			{
+				formula = formula.Remove(formula.Length - 1);
+				if (formula == string.Empty) formula = "0";
+			}
+
+			int count = formula.Count(ch => ch == '(') - formula.Count(ch => ch == ')');
+			formula = formula += new String(')', count);
+
 			//括號內先做
 			while (formula.Contains('('))
 			{

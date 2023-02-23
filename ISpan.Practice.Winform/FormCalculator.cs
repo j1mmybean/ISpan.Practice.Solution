@@ -40,7 +40,7 @@ namespace ISpan.Practice.Winform
 			buttonEqual.Click += ButtonEqual_Click;
 			buttonDelete.Click += ButtonDelete_Click;
 			buttonLeftBracket.Click += ButtonBrackets_Click;
-			buttonLeftBracket.Click += ButtonBrackets_Click;
+			buttonRightBracket.Click += ButtonBrackets_Click;
 			#endregion
 		}
 
@@ -50,7 +50,6 @@ namespace ISpan.Practice.Winform
 			calculator.InputBrackets(button.Text);
 
 			labelFormula.Text = calculator.Formula;
-			labelResult.Text = "= " + calculator.Calculate();
 		}
 
 		private void ButtonDelete_Click(object sender, EventArgs e)

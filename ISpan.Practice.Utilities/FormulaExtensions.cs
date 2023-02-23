@@ -13,6 +13,7 @@ namespace ISpan.Practice.Utilities
 		public static string GetSubFormula(this string formula)
 		{
 			string subFormula = string.Empty;
+			//用count找出與其對稱之左括號
 			int count = 0;
 			int begin = formula.IndexOf('(');
 			for (int i = begin + 1; i < formula.Length; i++)
