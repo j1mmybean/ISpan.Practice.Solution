@@ -12,7 +12,9 @@ namespace ISpan.Practice.Utilities
 	/// todo DividedByZeroException
 	/// </summary>
     public class Calculator
-    {
+	{
+		char[] ops = { '+', '-', '*', '/', '^' };
+
 		public string Formula { get; private set; } = string.Empty;
 
 		public string Calculate(string formula = default)
@@ -67,8 +69,6 @@ namespace ISpan.Practice.Utilities
 
 		public void InputOperator(string op)
 		{
-			char[] ops = { '+', '-', '*', '/', '^'};
-
 			if (string.IsNullOrEmpty(Formula) || ops.Contains(Formula[Formula.Count() - 1]))
 			{
 				if (op == "-") Formula += "(-";
@@ -79,7 +79,7 @@ namespace ISpan.Practice.Utilities
 
 		public void InputBrackets(string bracket)
 		{
-			Formula += bracket;
+			if (ops.Contains(Formula[Formula.Length-1])) Formula += bracket;
 		}
 	}
 }
