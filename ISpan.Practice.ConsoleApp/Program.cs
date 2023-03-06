@@ -11,6 +11,13 @@ namespace ISpan.Practice.ConsoleApp
 
 		static void Main(string[] args)
 		{
+			Console.WriteLine(100 ^ 0);
+
+			int num = 100;
+			Console.WriteLine(num++);
+			 num = 100;
+			Console.WriteLine(++num);
+
 			Console.WriteLine((decimal)Math.Pow(16, (double)1/2));
 
 		//	char[] ops = { '+', '-', '*', '/' };
